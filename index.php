@@ -390,7 +390,7 @@ require_once("inc/header.php");
               <img class='img-fluid' src='<?php echo $resultat['imgs']?>' alt=''>
               <div class='car-overlay-banner'>
                 <ul>
-                  <li><a href='descriptif_vehicule.php?id=<?php echo $resultat['id_car'] ?>'><i class='fa fa-link'></i></a></li>
+                  <li><a href='descriptif-vehicule.php?id=<?php echo $resultat['id_car'] ?>'><i class='fa fa-link'></i></a></li>
                   <!--<li><a href='#'><i class='fa fa-dashboard'></i></a></li>-->
                 </ul>
               </div>

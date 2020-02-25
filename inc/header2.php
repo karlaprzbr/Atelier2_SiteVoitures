@@ -32,6 +32,11 @@
 
 <!-- logo font -->
 <link href="https://fonts.googleapis.com/css?family=Sonsie+One" rel="stylesheet">
+
+<!-- carousel -->
+<link rel='stylesheet' type='text/css' href='css/slick/slick.css' />
+<link rel='stylesheet' type='text/css' href='css/slick/slick-theme.css' />
+<link rel='stylesheet' type='text/css' href='css/owl-carousel/owl.carousel.css' />
   
 </head>
 
@@ -121,8 +126,8 @@
             <li><a href="listing-01.php">Voitures <i class="fa fa-angle-down fa-indicator"></i></a>
 
                 <ul class="drop-down-multilevel">
-                    <li><a href="purchase.php">Achat</a></li>
-                    <li><a href="listing-01.php">Vente</a></li>
+                    <li><a href="listing-01.php">Achat</a></li>
+                    <li><a href="purchase.php">Vente</a></li>
                     <li><a href="car-demand.php">Demande précise</a></li>
                 </ul>
                 <!-- drop down full width -->
