@@ -2,14 +2,16 @@
 require_once("inc/init.php");
 require_once("inc/header2.php");
 if (isset($_GET['id'])) {
-    $requete = $pdo->query("SELECT * FROM cars WHERE id_car = '$_GET[id]'");
-    $resultat = $requete->fetch(PDO::FETCH_ASSOC); ?>
+    $requete1 = $pdo->query("SELECT * FROM cars WHERE id_car = '$_GET[id]'");
+    $car = $requete1->fetch(PDO::FETCH_ASSOC);
+    $requete2 = $pdo->query("SELECT * FROM images WHERE cars_id_car = '$_GET[id]'");
+    $images = $requete2->fetchAll(PDO::FETCH_ASSOC); ?>
 
 <section class='inner-intro bg-1 bg-overlay-black-70'>
         <div class='container'>
             <div class='row text-center intro-title'>
                 <div class='col-md-6 text-md-left d-inline-block'>
-                    <h1 class='text-white'><?php echo $resultat['car_brand'] . " " . $resultat['car_model'] ?></h1></div>
+                    <h1 class='text-white'><?php echo $car['car_brand'] . " " . $car['car_model'] ?></h1></div>
                 <div class='col-md-6 text-md-right float-right'></div>
             </div>
         </div>
@@ -18,9 +20,9 @@ if (isset($_GET['id'])) {
         <div class='container'>
             <div class='row'>
                 <div class='col-md-9'>
-                    <h3><?php echo $resultat['car_brand'] . " " . $resultat['car_model'] ?></h3></div>
+                    <h3><?php echo $car['car_brand'] . " " . $car['car_model'] ?></h3></div>
                 <div class='col-md-3'>
-                    <div class='car-price text-lg-right'><strong><?php echo $resultat['selling_price'] ?> €</strong><span>TTC</span></div>
+                    <div class='car-price text-lg-right'><strong><?php echo $car['selling_price'] ?> €</strong><span>TTC</span></div>
                 </div>
             </div>
             <div class='row'>
@@ -151,8 +153,16 @@ if (isset($_GET['id'])) {
             <div class='row'>
                 <div class='col-md-8'>
                     <div class='slider-slick'>
-                        <div class='slider slider-for detail-big-car-gallery'><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/1.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/2.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/3.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/4.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/5.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/6.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/7.jpg' alt=''><img class='img-fluid' src='images/detail/big/206PlusTrendyGrey/8.jpg' alt=''></div>
-                        <div class='slider slider-nav'> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/1.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/2.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/3.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/4.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/5.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/6.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/7.jpg' alt=''> <img class='img-fluid' src='images/detail/thum/206PlusTrendyGrey/8.jpg' alt=''> </div>
+                        <div class='slider slider-for detail-big-car-gallery'>
+                            <?php foreach ($images as $row) { ?>
+                                <img class='img-fluid' src='<?php echo $row["img_big_src"] ?>' alt=''>
+                            <?php } ?>
+                        </div>
+                        <div class='slider slider-nav'>
+                        <?php foreach ($images as $row) { ?>
+                                <img class='img-fluid' src='<?php echo $row["img_thum_src"] ?>' alt=''>
+                            <?php } ?>
+                        </div>
                     </div>
                     <div id='tabs'>
                         <ul class='tabs'>
@@ -163,20 +173,20 @@ if (isset($_GET['id'])) {
                             <h6>Quelques mots sur le véhicule</h6>
                             <p>
                                 <h3 style='font-size: 14px;'> - Autres informations pratiques </h3>
-                                <p>Nombre de clefs: <?php echo $resultat['number_key'] ?></p>
-                                <p>Date du dernier contrôle technique: <?php echo $resultat['tc_date'] ?></p>
+                                <p>Nombre de clefs: <?php echo $car['number_key'] ?></p>
+                                <p>Date du dernier contrôle technique: <?php echo $car['tc_date'] ?></p>
                                 <h3 style='font-size: 14px;'>- Caractéristiques intérieures et extérieures du véhicule</h3>
-                                <p>Sièges: Tissu noir</p>
-                                <p>Jantes: Tôles</p>
-                                <p>Couleur de la peinture extérieure: Gris metallic</p>
+                                <p>Sièges: <?php echo $car['car_seats'] ?></p>
+                                <p>Jantes: <?php echo $car['car_rims'] ?></p>
+                                <p>Couleur de la peinture extérieure: <?php echo $car['ext_color'] ?></p>
                                 <h3 style='font-size: 14px;'>- Etat général</h3>
-                                <p>Extérieur: Bon état général</p>
-                                <p>Intérieur: Bon état général</p>
-                                <p>Précisions sur les défauts de carrosserie : Rayures légères sur le pare choc avant, rayures légères sur le pare choc arrière</p>
+                                <p>Extérieur: <?php echo $car['ext_condition'] ?></p>
+                                <p>Intérieur: <?php echo $car['int_condition'] ?></p>
+                                <p>Précisions sur les défauts de carrosserie : <?php echo $car['body_defaults'] ?></p>
                                 <h3 style='font-size: 14px;'>- Entretien effectué</h3>
-                                <p>Carnet d'entretien disponible : Oui</p>
-                                <p>Dernières réparations effectuées : Pneus avant neufs, vidange neuve</p>
-                                <p>** Distribution effectuée ? ** Non</p>
+                                <p>Carnet d'entretien disponible : <?php echo $car['service_book'] ?></p>
+                                <p>Dernières réparations effectuées : <?php echo $car['last_fixes'] ?></p>
+                                <p>** Distribution effectuée ? ** <?php echo $car['timing_belt'] ?></p>
                                 <p>Le </p>
                                 <h3 style='font-size: 14px;'>- INFORMATIONS SUR LA GARANTIE :</h3>La garantie offerte couvre :</p> - Moteur</p> - Boîte de vitesses</p> - Pont</p> - Ingrédients</p>** Extension de garantie possible **</p>Jusqu'a 1 an</p>Disponibilité du LUNDI au SAMEDI</p>** sur rendez-vous **</p>Premier contact par téléphone.</p>Nous contacter au</p>** 07.82.14.81.41 **</p>Le tarif affiché est hors frais d'immatriculation et frais de mise à la route.</p>
                             </p>
@@ -186,46 +196,7 @@ if (isset($_GET['id'])) {
                             <table class='table table-bordered'>
                                 <tbody>
                                     <tr>
-                                        <th scope='row'>Vitres électriques</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Peinture intégrale</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Crochet d'attelage</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Ordinateur de bord</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Radio CD USB</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Volant cuir</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Climatisation manuelle</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>ABS</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Direction Assistée</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>ESP</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Fixation ISOFIX</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Anti-patinage</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Phares antibrouillard</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope='row'>Fermeture centralisée</th>
+                                        <th scope='row'><?php echo $car['options'] ?></th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -237,16 +208,16 @@ if (isset($_GET['id'])) {
                         <div class='details-block details-weight'>
                             <h5>DESCRIPTION</h5>
                             <ul>
-                                <li> <span>Marque</span> <strong class='text-right'>Peugeot</strong></li>
-                                <li> <span>Modèle</span> <strong class='text-right'>206+</strong></li>
-                                <li> <span>Boite</span> <strong class='text-right'>Manuelle</strong></li>
-                                <li> <span>Moteur</span> <strong class='text-right'>1.1 L</strong></li>
-                                <li> <span>Chevaux fiscaux</span> <strong class='text-right'>4</strong></li>
-                                <li> <span>1ère immatriculation </span> <strong class='text-right'>04/10</strong></li>
-                                <li> <span>Kilométrage</span> <strong class='text-right'>36000</strong></li>
-                                <li> <span>Carburant</span> <strong class='text-right'>Essence</strong></li>
-                                <li> <span>Couleur extérieure</span> <strong class='text-right'>Gris metallic</strong></li>
-                                <li> <span>Couleur intérieure</span> <strong class='text-right'>Tissu noir</strong></li>
+                                <li> <span>Marque</span> <strong class='text-right'><?php echo $car['car_brand'] ?></strong></li>
+                                <li> <span>Modèle</span> <strong class='text-right'><?php echo $car['car_model'] ?></strong></li>
+                                <li> <span>Boite</span> <strong class='text-right'><?php echo $car['gearbox'] ?></strong></li>
+                                <li> <span>Moteur</span> <strong class='text-right'><?php echo $car['motor'] ?> L</strong></li>
+                                <li> <span>Chevaux fiscaux</span> <strong class='text-right'><?php echo $car['car_cv'] ?></strong></li>
+                                <li> <span>1ère immatriculation </span> <strong class='text-right'><?php echo $car['car_first_registration'] ?></strong></li>
+                                <li> <span>Kilométrage</span> <strong class='text-right'><?php echo $car['km'] ?></strong></li>
+                                <li> <span>Carburant</span> <strong class='text-right'><?php echo $car['car_energy'] ?></strong></li>
+                                <li> <span>Couleur extérieure</span> <strong class='text-right'><?php echo $car['ext_color'] ?></strong></li>
+                                <li> <span>Couleur intérieure</span> <strong class='text-right'><?php echo $car['in_color'] ?></strong></li>
                             </ul>
                         </div>
                         <div class='details-social details-weight'>
@@ -273,5 +244,5 @@ if (isset($_GET['id'])) {
     </section>
 
 <?php }
-    require_once("inc/footer.php");
-    ?>
+require_once("inc/footer.php");
+?>

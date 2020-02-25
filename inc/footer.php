@@ -138,6 +138,7 @@
 
 <!-- owl-carousel -->
 <script type="text/javascript" src="js/owl-carousel/owl.carousel.min.js"></script>
+<script type='text/javascript' src='js/slick/slick.min.js'></script>
 
 <!-- select -->
 <script type="text/javascript" src="js/select/jquery-select.js"></script>
@@ -161,6 +162,9 @@
  
 <!-- custom -->
 <script type="text/javascript" src="js/custom.js"></script>
+<script type='text/javascript' src='js/forms/form-validation.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?render=explicit' async defer></script>
+<script type='text/javascript' src='js/forms/recaptcha.js'></script>
 
 <script type="text/javascript">
    (function($){
