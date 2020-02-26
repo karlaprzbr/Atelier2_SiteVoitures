@@ -195,7 +195,7 @@ require_once("inc/header.php");
 
           data-elementdelay="0.05" 
           
-          style="z-index: 8; white-space: nowrap; font-size: 70px; line-height: 70px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;text-align:center;text-transform:uppercase;"><a href='listing-01.html'>Retrouver notre parc en cliquant ici! </a> </div>
+          style="z-index: 8; white-space: nowrap; font-size: 70px; line-height: 70px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;text-align:center;text-transform:uppercase;"><a href='listing-01.php'>Retrouver notre parc en cliquant ici! </a> </div>
 
         <!-- LAYER NR. 5 -->
         <div class="tp-caption button red  tp-resizeme know-more" 
@@ -428,7 +428,7 @@ require_once("inc/header.php");
     </div>
    </div>
   </div>
-  <div style="width:100%;text-align:center;margin-top:40px;"> <a style="background-color:rgba(0, 0, 0, 0.7);padding:17px;border:1px solid white;color:white" href="listing-01.html"> Voir plus de véhicules... </a> </div>
+  <div style="width:100%;text-align:center;margin-top:40px;"> <a style="background-color:rgba(0, 0, 0, 0.7);padding:17px;border:1px solid white;color:white" href="listing-01.php"> Voir plus de véhicules... </a> </div>
 </section>   
 
 <!--=================================

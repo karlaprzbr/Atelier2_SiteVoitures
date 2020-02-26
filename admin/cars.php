@@ -138,9 +138,17 @@ if (isset($_POST) && !empty($_POST)) {
                 <!-- menu end -->
             </div>
         </header>
+
+        <?php $last_id = $pdo->lastInsertId();
+        if ($last_id > 0) { ?>
+          <div class="alert alert-success" role="alert">
+            La voiture a bien été ajouté à la base de données.
+          </div>
+        <?php } ?>
+        
         <!-- Formulaire d'ajout de véhicules -->
 
-        <form>
+        <form method="post">
             <h4>Informations du véhicule</h4>
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -196,7 +204,7 @@ if (isset($_POST) && !empty($_POST)) {
                 <input type="text" class="form-control" name="km">
             </div>
             <div class="form-group col-md-4">
-                <label for="ext_color">couleur intérieure</label>
+                <label for="ext_color">couleur extérieure</label>
                 <input type="text" class="form-control" name="ext_color">
             </div>
             <div class="form-group col-md-4">
@@ -301,13 +309,7 @@ if (isset($_POST) && !empty($_POST)) {
             </div>
             <button type="submit" class="btn btn-primary">Créer voiture</button>
         </form>
-        <?php
-        $last_id = $pdo->lastInsertId();
-        if ($last_id > 0) { ?>
-          <div class="alert alert-success" role="alert">
-            La voiture a bien été ajouté à la base de données.
-          </div>
-        <?php } ?>
+
         <!-- /////////////////////////////////////////////// -->
         <footer class="footer bg-2 bg-overlay-black-90">
             <div class="container">
