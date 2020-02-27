@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="inc/style.css">
 
     <title>Back Office</title>
   </head>
@@ -18,14 +19,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="cars.php">Voitures</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Voitures
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="cars.php">Créer une voiture</a>
+                        <a class="dropdown-item" href="cars-list.php">Liste des voitures</a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="client.php">Clients</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Clients
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="client.php">Créer un client</a>
+                        <a class="dropdown-item" href="clients-list.php">Liste des clients</a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="invoice.php">Factures</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Facturation
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="create-invoice.php">Créer une facture</a>
+                        <a class="dropdown-item" href="invoice-list.php">Liste des factures</a>
+                    </div>
                 </li>
             </ul>
         </div>
