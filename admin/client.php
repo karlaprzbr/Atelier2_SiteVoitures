@@ -1,6 +1,12 @@
 <?php
 require_once("../inc/init.php");
 require_once("inc/header.php");
+
+if(!isAdminConnected()){
+	header("location:index.php");
+	exit();
+}
+
 if (isset($_POST) && !empty($_POST)) {
 	$pdo->query("INSERT INTO clients(`first_name`,`last_name`,`address`,`postal_code`,`city`,`telephone`,`type`,`siret`,`birth_date`,`birth_place`,`gender`) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[address]','$_POST[postal_code]','$_POST[city]','$_POST[telephone]','$_POST[type]','$_POST[siret]','$_POST[birth_date]','$_POST[birth_place]','$_POST[gender]')");
 }
