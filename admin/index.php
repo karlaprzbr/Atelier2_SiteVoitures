@@ -40,19 +40,20 @@ if (!isAdminConnected()) { ?>
 <?php }
 
 if(isset($_POST['connexion']) && !empty($_POST['connexion'])) {
-    $r = $pdo->query("SELECT * FROM admin WHERE admin_login = '$_POST[admin_login]' AND admin_mdp = '$_POST[admin_mdp]'");
+    $r = $pdo->query("SELECT * FROM admin WHERE admin_login = '$_POST[admin_login]'");
     $admin = $r->fetch();
     if($r->rowCount() >= 1) {
-        $_SESSION['admin']['id_admin'] = $admin['id_admin'];
+        if(password_verify($_POST['admin_mdp'], $admin['admin_mdp'])) {
+            $_SESSION['admin']['id_admin'] = $admin['id_admin'];
         $_SESSION['admin']['admin_login'] = $admin['admin_login'];
-        $_SESSION['admin']['admin_mdp'] = $admin['admin_mdp'];
         header("Refresh:0; url=index.php");
 	    exit();
-    }else { ?>
-        <div class='alert alert-danger' role='alert'>
-            Le login ou le mot de passe n'ont pas été reconnus.
-        </div>
-    <?php }
+        } else { ?>
+            <div class='alert alert-danger' role='alert'>
+                Le login ou le mot de passe n'ont pas été reconnus.
+            </div>
+        <?php }
+    }
 } ?>
 </div>
 
