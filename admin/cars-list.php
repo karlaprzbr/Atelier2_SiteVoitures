@@ -25,7 +25,6 @@ $r = $pdo->query("SELECT * FROM cars");
                 <th scope="col">Carburant</th>
                 <th scope="col">Couleur extérieure</th>
                 <th scope="col">Couleur intérieure</th>
-                <th scope="col">Annonce</th>
             </tr>
         </thead>
         <tbody>
@@ -41,7 +40,6 @@ $r = $pdo->query("SELECT * FROM cars");
                 <td><?php echo $resultat['car_energy'] ?></td>
                 <td><?php echo $resultat['ext_color'] ?></td>
                 <td><?php echo $resultat['in_color'] ?></td>
-                <td><a href="display-invoice.php?id_car=<?php echo $resultat['id_car'] ?>">Créer une annonce LeBonCoin</a></td>
             </tr>
         <?php } ?>
         </tbody>

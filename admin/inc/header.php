@@ -47,6 +47,9 @@
                         <a class="dropdown-item" href="invoice-list.php">Liste des factures</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a href="annonce.php" class="nav-link">Annonce LeBonCoin</a>
+                </li>
             </ul>
         </div>
     </nav>
