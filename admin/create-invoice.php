@@ -2,6 +2,11 @@
 require_once("../inc/init.php");
 require_once("inc/header.php");
 
+if(!isAdminConnected()){
+	header("location:index.php");
+	exit();
+}
+
 $r1 = $pdo->query("SELECT * FROM cars");
 $total_count = $r1->columnCount();
 

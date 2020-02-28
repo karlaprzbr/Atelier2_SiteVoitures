@@ -1,6 +1,12 @@
 <?php
 require_once("../inc/init.php");
 require_once("inc/header.php");
+
+if(!isAdminConnected()){
+	header("location:index.php");
+	exit();
+}
+
 if (isset($_POST) && !empty($_POST)) {
     $pdo->query("INSERT INTO cars(car_brand, car_model, gearbox, motor, car_type, car_first_registration, car_cv, car_ch, car_energy, plate_number, km, number_key, ext_color, in_color, options, imgs, selling_price, price_letters, purchase_price, purchase_commission_price, old_selling_price, year, purchase_date, origin, tc_date, car_seats, car_rims, ext_condition, int_condition, body_defaults, service_book, last_fixes, timing_belt) VALUES ('$_POST[car_brand]','$_POST[car_model]','$_POST[gearbox]','$_POST[motor]','$_POST[car_type]','$_POST[car_first_registration]','$_POST[car_cv]','$_POST[car_ch]','$_POST[car_energy]','$_POST[plate_number]','$_POST[km]','$_POST[number_key]','$_POST[ext_color]','$_POST[in_color]','$_POST[options]','$_POST[imgs]','$_POST[selling_price]','$_POST[price_letters]','$_POST[purchase_price]','$_POST[purchase_commission_price]','$_POST[old_selling_price]','$_POST[year]','$_POST[purchase_date]','$_POST[origin]','$_POST[tc_date]','$_POST[car_seats]','$_POST[car_rims]','$_POST[ext_condition]','$_POST[int_condition]','$_POST[body_defaults]','$_POST[service_book]','$_POST[last_fixes]','$_POST[timing_belt]')");
 }

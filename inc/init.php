@@ -7,4 +7,6 @@ session_start();
 define("RACINE_SITE", $_SERVER["DOCUMENT_ROOT"] . "/Atelier2_SiteVoitures");
 define("URL", "http://localhost/Atelier2_SiteVoitures");
 
+require_once("fonctions.php");
+
 ?>

@@ -2,6 +2,11 @@
 require_once("../inc/init.php");
 require_once("inc/header.php");
 
+if(!isAdminConnected()){
+	header("location:index.php");
+	exit();
+}
+
 $r = $pdo->query("SELECT * FROM clients");
 ?>
 

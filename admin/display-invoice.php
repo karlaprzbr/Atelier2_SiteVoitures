@@ -2,6 +2,11 @@
 require_once("../inc/init.php");
 require_once("inc/header.php");
 
+if(!isAdminConnected()){
+	header("location:index.php");
+	exit();
+}
+
 if(isset($_GET["id_invoice"])){
     $r = $pdo->query("SELECT * FROM invoices WHERE id_invoice = '$_GET[id_invoice]'");
     $donnees_facture = $r->fetch();
